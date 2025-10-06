@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include <cstring>
+
 using namespace std;
 
 class Car
@@ -22,9 +24,6 @@ public:
 
         color = new char[strlen(newColor) + 1];
         strcpy(color, newColor);
-
-        year = 0;
-        price = 0.0;
     }
 
     Car(const Car &obj)
@@ -42,13 +41,17 @@ public:
         price = obj.price;
     }
 
-    void SetCarModel(const char *newModel)
+    void SetModel(const char *newModel)
     {
         delete[] model;
         model = new char[strlen(newModel) + 1];
         strcpy(model, newModel);
     }
-    const char *ShowModel() const { return model; }
+
+    const char *GetModel() const
+    {
+        return model;
+    }
 
     void SetCountry(const char *newCountry)
     {
@@ -56,7 +59,11 @@ public:
         country = new char[strlen(newCountry) + 1];
         strcpy(country, newCountry);
     }
-    const char *ShowCountry() const { return country; }
+
+    const char *GetCountry() const
+    {
+        return country;
+    }
 
     void SetColor(const char *newColor)
     {
@@ -64,21 +71,39 @@ public:
         color = new char[strlen(newColor) + 1];
         strcpy(color, newColor);
     }
-    const char *ShowColor() const { return color; }
 
-    void SetYear(int newYear) { year = newYear; }
-    int ShowYear() const { return year; }
+    const char *GetColor() const
+    {
+        return color;
+    }
 
-    void SetPrice(double newPrice) { price = newPrice; }
-    double ShowPrice() const { return price; }
+    void SetYear(int newYear)
+    {
+        year = newYear;
+    }
+
+    const int GetYear() const
+    {
+        return year;
+    }
+
+    void SetPrice(double newPrice)
+    {
+        price = newPrice;
+    }
+
+    const double GetPrice() const
+    {
+        return price;
+    }
 
     void Print()
     {
         cout << "Model: " << model << endl;
         cout << "Country: " << country << endl;
         cout << "Color: " << color << endl;
-        cout << "Price: $" << price << endl;
         cout << "Year: " << year << endl;
+        cout << "Price: $" << price << endl;
     }
 
     ~Car()
@@ -91,8 +116,8 @@ public:
 
 int main()
 {
-    Car car1("Audi A6", "Germany", "Gray");
-    car1.SetYear(2021);
-    car1.SetPrice(52000.0);
-    car1.Print();
+    Car obj1("BMW M4 Coupe", "Germany", "Blue");
+    obj1.SetYear(2022);
+    obj1.SetPrice(72000.0);
+    obj1.Print();
 }
